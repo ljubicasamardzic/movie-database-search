@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domaći 3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+            <h1>The Open Movie Database</h1>
+            <h4>Svi podaci o Vašim omiljenim filmovima i serijama na jednom mjestu!</h4>
+                <input type="text" placeholder="Unesite kriterijum pretrage..." id="search_term">
+                <select id="contentType">
+                    <option value="movie">Filmovi</option>
+                    <option value="series">Serije</option>
+                </select>
+                <input type="text" id="yearReleased" placeholder="Godina">
+                <button id="submit-btn" onclick="searchDB()">Pretraga</button>
+        <div class="row">
+                <table>
+                    <tbody id="movie-table-body">
+
+                    </tbody>
+                </table>            
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js">
+    </script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
+
+
+
