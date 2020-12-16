@@ -13,33 +13,33 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row mb-5">
+    <div class="container-fluid px-0">
+        <div class="row header-section pt-5">
             <div class="col-12">
-                <div class="d-flex d-row justify-content-center text-center">
-                    <div class="p-5">
-                        <h1 class="main-title">The Open Movie Database</h1>
+                <div class="d-flex d-row justify-content-center text-center mb-5">
+                    <div class="p-4">
+                        <h1 class="main-title mb-3">The Open Movie Database</h1>
                         <h4 class="subtitle">Svi podaci o Vašim omiljenim filmovima i serijama na jednom mjestu!</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <div class="d-flex d-row justify-content-center text-center">
                     <div class="form-inline">
-                        <div class="form-group m-2">
+                        <div class="form-group m-sm-2">
                             <input type="text" class="form-control" placeholder="Unesite traženi naziv.."
                                 id="search_term">
                         </div>
-                        <div class="form-group m-2">
+                        <div class="form-group m-sm-2">
                             <select class="form-control" id="contentType">
                                 <option value="movie">Filmovi</option>
                                 <option value="series">Serije</option>
                             </select>
                         </div>
-                        <div class="form-group m-2">
+                        <div class="form-group m-sm-2">
                             <input class="form-control" type="text" id="yearReleased" placeholder="Godina">
                         </div>
-                        <div class="form-group m-2">
+                        <div class="form-group m-sm-2">
                             <button class="form-control btn btn-primary" type="submit" id="submit-btn" onclick="searchDB()">Pretraga</button>
                         </div>
                     </div>
@@ -49,8 +49,7 @@
         </div>
 
         <div class="row" id="movie-table">
-
-
+        
         </div>
     </div>
 

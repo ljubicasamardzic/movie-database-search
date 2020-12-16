@@ -26,10 +26,10 @@ function searchDB() {
                 let idTitle = title.replace(/[^\w\s]/gi, '').replace(/ /g, "-");
 
                 $('#movie-table').append(
-                    `<div class="col-12 col-sm-3 col-md-2 single-table">
+                    `<div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4">
                         <img src=${poster} width="150" height="180" alt="poster"></img>
                     </div>
-                    <div class="col-12 col-sm-9 col-md-10 single-table">
+                    <div class="col-12 col-sm-8 col-md-9 col-xl-10 single-table pl-2 px-md-5 single-table--padding">
                     <table cellpadding="10">
                     <tr>
                         <td>Naslov:</td>

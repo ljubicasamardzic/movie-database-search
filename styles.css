@@ -14,23 +14,35 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-size: 1.6rem;
+
     /* line-height: 1.7;
     padding: 3rem; */
     box-sizing: border-box;
 }
 
-@media(min-width:768) {
+/* @media(min-width:768) {
     #movie-table {
         margin-left: 10%;
     }
-}
+} */
 @media(max-width: 768px) {
     html {
         font-size: 8px;
     }
+    #movie-table {
+        margin: 0 5% !important;
+    }
+}
+@media(max-width: 576px) {
+    .form-group {
+        width: 100%;
+        margin: .3rem 5%;
+    }
 }
 .main-title {
     font-size: 3rem;
+    letter-spacing: .2rem;
+    font-weight: 700;
 }
 .subtitle {
     font-size: 2rem ;
@@ -38,12 +50,41 @@ body {
 .btn-group-lg>.btn, .btn-lg {
     font-size: 1.6rem;
 }
+
+@media(min-width: 768px) {
+    .single-table {
+        margin-bottom: 5rem;
+    }
+    table td {
+        padding: 15px;
+    }
+}
 .single-table {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
-.w-90 {
-    width: 50%;
-}
+
 .form-control {
     font-size: 1.4rem;
 }
+.header-section {
+    margin-bottom: 6rem;
+    background-color: aliceblue;
+}
+#movie-table {
+    margin: 0 15%;
+}
+@media(min-width:1200px) {
+    #movie-table {
+        margin: 0 20%;
+    }
+}
+@media(min-width:1200px) and (max-width:1550px) {
+    .single-table--padding {
+        padding-left: 8rem !important;
+    }
+}
+/* table {
+    border-collapse: separate;
+    border-spacing: 10px 0;
+
+} */
