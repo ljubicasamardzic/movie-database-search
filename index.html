@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
     <title>Domaći 3</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -12,19 +14,43 @@
 
 <body>
     <div class="container-fluid">
-            <h1>The Open Movie Database</h1>
-            <h4>Svi podaci o Vašim omiljenim filmovima i serijama na jednom mjestu!</h4>
-                <input type="text" placeholder="Unesite kriterijum pretrage..." id="search_term">
-                <select id="contentType">
-                    <option value="movie">Filmovi</option>
-                    <option value="series">Serije</option>
-                </select>
-                <input type="text" id="yearReleased" placeholder="Godina">
-                <button id="submit-btn" onclick="searchDB()">Pretraga</button>
-        <div class="row">
-            <div id="movie-table">
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="d-flex d-row justify-content-center text-center">
+                    <div class="p-5">
+                        <h1 class="main-title">The Open Movie Database</h1>
+                        <h4 class="subtitle">Svi podaci o Vašim omiljenim filmovima i serijama na jednom mjestu!</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex d-row justify-content-center text-center">
+                    <div class="form-inline">
+                        <div class="form-group m-2">
+                            <input type="text" class="form-control" placeholder="Unesite traženi naziv.."
+                                id="search_term">
+                        </div>
+                        <div class="form-group m-2">
+                            <select class="form-control" id="contentType">
+                                <option value="movie">Filmovi</option>
+                                <option value="series">Serije</option>
+                            </select>
+                        </div>
+                        <div class="form-group m-2">
+                            <input class="form-control" type="text" id="yearReleased" placeholder="Godina">
+                        </div>
+                        <div class="form-group m-2">
+                            <button class="form-control btn btn-primary" type="submit" id="submit-btn" onclick="searchDB()">Pretraga</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </div>    
+        </div>
+
+        <div class="row" id="movie-table">
+
+
         </div>
     </div>
 
@@ -35,6 +61,3 @@
 </body>
 
 </html>
-
-
-

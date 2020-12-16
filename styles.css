@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    /* line-height: 1.7;
+    padding: 3rem; */
+    box-sizing: border-box;
+}
+
+@media(min-width:768) {
+    #movie-table {
+        margin-left: 10%;
+    }
+}
+@media(max-width: 768px) {
+    html {
+        font-size: 8px;
+    }
+}
+.main-title {
+    font-size: 3rem;
+}
+.subtitle {
+    font-size: 2rem ;
+}
+.btn-group-lg>.btn, .btn-lg {
+    font-size: 1.6rem;
+}
+.single-table {
+    margin-bottom: 3rem;
+}
+.w-90 {
+    width: 50%;
+}
+.form-control {
+    font-size: 1.4rem;
+}
