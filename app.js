@@ -2,6 +2,7 @@
 
 function searchDB() {
     $('#movie-table').html('');
+    $('.results').html('');
     let term = $('#search_term').val();
     if (term.length == 0) return;
     let type = $('#contentType').children('option:selected').val();
@@ -13,6 +14,13 @@ function searchDB() {
         type: "GET",
         url: searchURL,
         success: (res) => {
+            console.log(res);
+            if (res['Response'] === 'False') {
+                $('#movie-table').append('<div class="col-12"><h3>Nema rezultata za tražene kriterijume</h3><div><img src="try-again.webp"></img>');
+                return;
+            } else {
+                let resultsNo = res['Search'].length;
+                $('.results').append(`<div class="col-12 mb-3"><p class="font-weight-bold">Ukupno rezultata: ${resultsNo}</p></div>`);
 
             res['Search'].forEach(element => {
                 let title = element['Title'];
@@ -24,13 +32,13 @@ function searchDB() {
                 let rowClass = title.replace(/[^\w\s]/gi, '').replace(/ /g, '');
                 // Remove special characters and replace spaces with hyphens - to make it distinct from class 
                 let idTitle = title.replace(/[^\w\s]/gi, '').replace(/ /g, "-");
-
+                
                 $('#movie-table').append(
                     `<div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4">
                         <img src=${poster} width="150" height="180" alt="poster"></img>
                     </div>
                     <div class="col-12 col-sm-8 col-md-9 col-xl-10 single-table pl-2 px-md-5 single-table--padding">
-                    <table cellpadding="10">
+                    <table>
                     <tr>
                         <td>Naslov:</td>
                         <td>${title}</td>
@@ -50,7 +58,8 @@ function searchDB() {
                    
                     `
                 );
-            });
+            });                   
+        }
         },
         error: (error) => console.log(error)
     });
@@ -94,7 +103,7 @@ function findData(receivedId) {
             });
             let seasons = (seasonsNo !== undefined) ? `<tr class="2${btnId}"><td>Broj sezona:</td><td>${seasonsNo}</td></tr>` : '';
 
-            tableRow.before('<tr class="2' + `${btnId}` + '"><td>Datum objavljivanja:</td><td>' + `${dateReleased}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Trajanje:</td><td>' + `${runtime}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Režiser:</td><td>' + `${director}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Glumci:</td><td>' + `${actors}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Radnja:</td><td>' + `${plot}` + '</td></tr>' + `${seasons}` + '<tr class="2' + `${btnId}` + '"><td>Ocjene gledalaca:</td><td><table><tr><td>' + `${ratingSource}` + '</td><td>' + `${ratingValue}` + '</td></tr>');
+            tableRow.before('<tr class="2' + `${btnId}` + '"><td>Datum objavljivanja:</td><td>' + `${dateReleased}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Trajanje:</td><td>' + `${runtime}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Režiser:</td><td>' + `${director}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Glumci:</td><td>' + `${actors}` + '</td></tr><tr class="2' + `${btnId}` + '"><td>Radnja:</td><td>' + `${plot}` + '</td></tr>' + `${seasons}` + '<tr class="2' + `${btnId}` + '"><td>Ocjene gledalaca:</td><td><table><tr><td class="pl-0">' + `${ratingSource}` + '</td><td>' + `${ratingValue}` + '</td></tr>');
             $('button#' + `${btnId}`).addClass('d-none');
             $('button#' + `${btnId}`).siblings().removeClass('d-none');
 
