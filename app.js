@@ -1,5 +1,5 @@
 let apikey = '81094c1f';
-let url = 'http://www.omdbapi.com/?apikey=' + apikey;
+let url = 'https://www.omdbapi.com/?apikey=' + apikey;
 
 function searchDB() {
     // Empty the table and results info each time the function is called
