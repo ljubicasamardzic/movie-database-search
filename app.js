@@ -16,7 +16,7 @@ function searchDB() {
         success: (res) => {
             console.log(res);
             if (res['Response'] === 'False') {
-                $('#movie-table').append('<div class="col-12"><h3>Nema rezultata za tražene kriterijume</h3><div><img src="try-again.webp"></img>');
+                $('#movie-table').append('<div class="col-12"><h3>Nema rezultata za tražene kriterijume</h3><div><img src="./img/try-again.webp"></img>');
                 return;
             } else {
                 let resultsNo = res['Search'].length;
@@ -25,13 +25,21 @@ function searchDB() {
             res['Search'].forEach(element => {
                 let title = element['Title'];
                 let year = element['Year'];
-                let poster = element['Poster'] !== 'N/A' ? element['Poster'] : "./no-img.jpg";
-                // Send title over with hyphens 
-                let dataTitle = title.replace(/ /g, "-");
+                let poster = element['Poster'] !== 'N/A' ? element['Poster'] : "./img/no-img.jpg";
+
+                // Send title over with hyphens and no special characters
+                let dataTitle = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/ /g, "-");
+                
                 // Remove special characters and spaces - for class name
+                console.log('title without spec chars' + dataTitle);
                 let rowClass = title.replace(/[^\w\s]/gi, '').replace(/ /g, '');
+
                 // Remove special characters and replace spaces with hyphens - to make it distinct from class 
                 let idTitle = title.replace(/[^\w\s]/gi, '').replace(/ /g, "-");
+
+                // Adding the type and year to make the search more accurate
+                let idWithTypeYear = idTitle + '&' + type + '&' + year;
+                console.log('id before sending: ' + idWithTypeYear);
                 
                 $('#movie-table').append(
                     `<div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4">
@@ -49,7 +57,7 @@ function searchDB() {
                     </tr>
                     <tr class="${rowClass}">
                         <td colspan="2">
-                            <button id="${idTitle}" data-attribute="${dataTitle}" class="btn btn-primary btn-lg" onclick="findData(id)">Više informacija</button>
+                            <button id="${dataTitle}" data-attribute="${idWithTypeYear}" class="btn btn-primary btn-lg" onclick="findData(id)">Više informacija</button>
                             <button class="btn btn-primary btn-lg d-none" id="1${idTitle}" onclick="hideInfo(id)">Prikaži manje</button>
                         </td>
                     </tr>
@@ -68,19 +76,31 @@ function searchDB() {
 
 function findData(receivedId) {
 
-    // Title with hyphens as received from the function
+    // Title with hyphens
     let btnId = receivedId;
 
-    let titleHyphen = $('button#' + `${btnId}`).attr('data-attribute');
-
+    let titleWithTypeYear = $('button#' + `${btnId}`).attr('data-attribute');
+    
+    // Split the id at the & character
+    let newId = titleWithTypeYear.split('&');
+    console.log('newId: ' + newId);
     // Title without hyphens for searching the DB
-    let searchTitle = titleHyphen.replace(/-/g, ' ');
+    let searchTitle = newId[0].replace(/-/g, ' ');
+    console.log('search title: ' + searchTitle);
+
+    // Type - film or series
+    let searchType = newId[1];
+    console.log('search type: ' + searchType);
+
+    // Year of release
+    let searchYear = newId[2];
 
     // Title with no special chars and no spaces for row id
     let rowId = receivedId.replace(/[^\w\s]/gi, '').replace(/ /g, '');
 
     let tableRow = $('#movie-table tr.' + `${rowId}`);
-    let searchUrl1 = "http://www.omdbapi.com/?i=tt3896198&apikey=81094c1f" + "&t=" + searchTitle;
+    let searchUrl1 = "http://www.omdbapi.com/?i=tt3896198&apikey=81094c1f" + "&t=" + searchTitle + "&type=" + searchType + '&y=' + searchYear;
+    console.log('search url: ' + searchUrl1);
 
     $.ajax({
         type: "GET",
@@ -95,6 +115,7 @@ function findData(receivedId) {
             let seasonsNo = res['totalSeasons'];
 
             let ratings = res['Ratings'];
+            console.log(ratings);
             let ratingSource = '';
             let ratingValue = '';
             ratings.forEach((rating) => {
