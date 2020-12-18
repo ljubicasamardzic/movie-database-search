@@ -2,6 +2,8 @@
 *::after,
 *::before {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -30,14 +32,20 @@ body {
         margin: .3rem 5%;
     }
     .main-title {
-        font-size: 3rem !important;
+        font-size: 3.5rem !important;
     }
     .subtitle {
         font-size: 1.6rem !important;
-        width: 75%;
+        width: 95%;
     }
     .form-control {
         font-size: 1.4rem !important;
+    }
+}
+
+@media(min-width: 426px) and (max-width: 576px) {
+    .subtitle {
+        width: 80%;
     }
 }
 
