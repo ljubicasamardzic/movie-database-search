@@ -7,7 +7,7 @@ function searchDB() {
     $('.results').html('');
     
     // Grab the information that the user typed in 
-    let term = $('#search_term').val();
+    let term = $('#search_term').val().trim();
     if (term.length == 0) return;
     let type = $('#contentType').children('option:selected').val();
     let year = $('#yearReleased').val();
