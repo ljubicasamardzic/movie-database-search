@@ -109,13 +109,3 @@ td {
         margin: 0 5% 0 15%;
     }
 }
-@media(min-width:1536px) and (max-width:1919px) {
-    .results {
-        padding-left: 10px;
-    }
-}
-@media(min-width:1920px) {
-    .results {
-        padding-left: 35px;
-    }
-}

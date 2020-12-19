@@ -24,7 +24,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
                 } else {
                     let resultsNo = res['Search'].length;
                     // Write the number of results found
-                    $('.results').append(`<div class="col-12 col-sm-4 col-md-3 mb-3 px-0"><p class="font-weight-bold">Ukupno rezultata: ${resultsNo}</p></div>`);
+                    $('.results').append(`<div class="col-12 mb-3 d-flex flex-row justify-content-start px-0"><p class="font-weight-bold">Ukupno rezultata: ${resultsNo}</p></div>`);
 
                     // Iterate the array and get info for each element
                     res['Search'].forEach(element => {
@@ -37,7 +37,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
 
                         $('#movie-table').append(
                             `
-                    <div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4 mt-md-3 px-0 d-flex flex-column align-items-start align-items-md-center">
+                    <div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4 mt-md-3 px-0 d-flex flex-column align-items-start">
                         <img src=${poster} class="px-0 poster" width="180" height="230" alt="poster"></img>
                     </div>
                     <div class="col-12 col-sm-8 col-md-9 col-xl-10 single-table px-0 px-md-5 single-table--padding">
