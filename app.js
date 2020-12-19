@@ -24,7 +24,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
                 } else {
                     let resultsNo = res['Search'].length;
                     // Write the number of results found
-                    $('.results').append(`<div class="col-12 mb-3"><p class="font-weight-bold">Ukupno rezultata: ${resultsNo}</p></div>`);
+                    $('.results').append(`<div class="col-12 col-sm-4 col-md-3 mb-3 px-0"><p class="font-weight-bold">Ukupno rezultata: ${resultsNo}</p></div>`);
 
                     // Iterate the array and get info for each element
                     res['Search'].forEach(element => {
@@ -37,11 +37,11 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
 
                         $('#movie-table').append(
                             `
-                    <div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4">
-                        <img src=${poster} width="150" height="180" alt="poster"></img>
+                    <div class="col-12 col-sm-4 col-md-3 col-xl-2 single-table mt-4 mt-md-3 px-0 d-flex flex-column align-items-start align-items-md-center">
+                        <img src=${poster} class="px-0 poster" width="180" height="230" alt="poster"></img>
                     </div>
-                    <div class="col-12 col-sm-8 col-md-9 col-xl-10 single-table pl-2 px-md-5 single-table--padding">
-                        <table>
+                    <div class="col-12 col-sm-8 col-md-9 col-xl-10 single-table px-0 px-md-5 single-table--padding">
+                        <table class="table-responsive">
                             <tr>
                                 <td>Naslov:</td>
                                 <td>${title}</td>
@@ -52,7 +52,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <button id="${imdbID}" class="btn btn-primary btn-lg" onclick="findData(id)">Više informacija</button>
+                                    <button id="${imdbID}" class="btn btn-primary btn-lg mt-4" onclick="findData(id)">Više informacija</button>
                                     <button class="btn btn-primary btn-lg d-none" id="btn1${imdbID}" onclick="hideInfo(id)">Prikaži manje</button>
                                 </td>
                             </tr>
@@ -118,7 +118,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
 
                     tableRow.before(`
                     <tr class="row${searchId}">
-                        <td>Datum objavljivanja:</td>
+                        <td class="nowrap">Datum objavljivanja:</td>
                         <td>${dateReleased}</td>
                     </tr>
                     <tr class="row${searchId}">
@@ -139,7 +139,7 @@ let url = 'https://www.omdbapi.com/?apikey=' + apikey;
                     </tr>
                     ${seasons}
                     <tr class="row${searchId}">
-                        <td>Ocjene gledalaca:</td>
+                        <td class="nowrap">Ocjene gledalaca:</td>
                         <td>
                             <table>
                                 <tr>
